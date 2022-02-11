@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_txt">Kindly note that a copy of this chat will be kept for training, monitoring and security purposes. You may refer to our privacy notice <u><font color='blue'>here</font></u> for more details.</string>
+    <string name="type_msg">Type Your Message here...</string>
+    <string name="live_chat">Live Chat</string>
+    <string name="live_chat_connect_agent">Let us get you connected to our agents</string>
+    <string name="chat_close_option">How would you like to proceed?</string>
+    <string name="minimise_chat">Minimise Chat</string>
+    <string name="end_chat">End Chat</string>
+</resources>

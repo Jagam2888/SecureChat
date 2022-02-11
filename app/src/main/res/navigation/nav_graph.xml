@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/secureChatMainFragment">
+
+    <fragment
+        android:id="@+id/secureChatMainFragment"
+        android:name="com.example.myapplication.ui.SecureChatMainFragment"
+        android:label="fragment_secure_chat_main"
+        tools:layout="@layout/fragment_secure_chat_main" />
+    <!--<fragment
+        android:id="@+id/chatServiceSelectionFragment2"
+        android:name="com.example.myapplication.ui.ChatServiceSelectionFragment"
+        android:label="fragment_chat_service_selection"
+        tools:layout="@layout/fragment_chat_service_selection" />-->
+</navigation>
