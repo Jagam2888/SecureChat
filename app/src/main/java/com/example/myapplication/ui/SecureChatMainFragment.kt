@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.example.myapplication.R
@@ -43,27 +44,15 @@ class SecureChatMainFragment : Fragment(R.layout.fragment_secure_chat_main) {
         }
     }
 
-    private fun onLayoutChangeListener() = object :View.OnLayoutChangeListener{
-        override fun onLayoutChange(
-            view: View?,
-            left: Int,
-            top: Int,
-            right: Int,
-            bottom: Int,
-            oldLeft: Int,
-            oldTop: Int,
-            oldRight: Int,
-            oldBottom: Int
-        ) {
+    private fun onLayoutChangeListener() =
+        View.OnLayoutChangeListener { view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
             if (bottom < oldBottom){
                 chatBinding.chatRecyclerview.postDelayed(Runnable { chatBinding.chatRecyclerview.smoothScrollToPosition(secureChatAdapter.itemCount) },100)
             }
         }
 
-    }
-
     private fun setAdapter(){
-        secureChatAdapter = SecureChatAdapter(object : SimpleListener{
+        secureChatAdapter = SecureChatAdapter(requireContext(),object : SimpleListener{
             override fun onClickItem(topics: String) {
                 Log.d("item_pos_act",topics)
                 removeTopics()
@@ -122,7 +111,15 @@ class SecureChatMainFragment : Fragment(R.layout.fragment_secure_chat_main) {
 
         val alertDialog = AlertDialog.Builder(requireContext())
         alertDialog.setView(customLayout)
+
+        val endChatBtn = customLayout.findViewById(R.id.btn_end_chat) as Button
+
         val dialog = alertDialog.create()
         dialog.show()
+
+        endChatBtn.setOnClickListener {
+            dialog.dismiss()
+            StartSurveyFragment().show(childFragmentManager,"Start Survey")
+        }
     }
 }

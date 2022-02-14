@@ -2,7 +2,9 @@ package com.example.myapplication.adapter
 
 
 import android.content.Context
+import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.myapplication.data.ChatTopics
@@ -42,12 +44,26 @@ sealed class SecureChatRecyclerViewHolder(
     }
 
     class ChatTopicsMenuViewHolder(private val chatTopicsMenuBinding: ChatTopicsMenuBinding):SecureChatRecyclerViewHolder(chatTopicsMenuBinding){
-        fun bind(chatTopicsList:List<ChatTopics>,simpleListener: SimpleListener){
+        fun bind(chatTopicsList:List<ChatTopics>,simpleListener: SimpleListener,context: Context){
             val spaceItemDecoration = SpaceItemDecoration(30)
             chatTopicsMenuBinding.chatTopicRecyclerview.addItemDecoration(spaceItemDecoration)
+
+            val layoutManger = GridLayoutManager(context,2)
+            chatTopicsMenuBinding.chatTopicRecyclerview.layoutManager = layoutManger
+
             val chatTopicsAdapter = ChatTopicsAdapter(simpleListener)
             chatTopicsMenuBinding.topicsadapter = chatTopicsAdapter
             chatTopicsAdapter.chatTopicList = chatTopicsList
+
+            /*layoutManger.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    Log.d("span_pos",position.toString())
+                    return 2
+                }
+            }*/
+
+
+
         }
 
     }

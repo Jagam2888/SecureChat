@@ -9,4 +9,7 @@
     <string name="chat_close_option">How would you like to proceed?</string>
     <string name="minimise_chat">Minimise Chat</string>
     <string name="end_chat">End Chat</string>
+    <string name="help_us_improve">Help us improve and serve you better</string>
+    <string name="help_us_improve_1">We would appreciate if you can spend a \nminute to share with us your feedback \non HLB Connect</string>
+    <string name="start_survey">Start Survey</string>
 </resources>

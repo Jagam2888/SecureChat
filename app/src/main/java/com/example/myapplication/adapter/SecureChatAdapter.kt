@@ -1,5 +1,6 @@
 package com.example.myapplication.adapter
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,10 +17,12 @@ import com.example.myapplication.utils.SimpleListener
 import java.lang.IllegalArgumentException
 
 class SecureChatAdapter(
+    private val context: Context,
     private val simpleListener: SimpleListener
+
 ): RecyclerView.Adapter<SecureChatRecyclerViewHolder>() {
 
-    //var simpleListener:SimpleListener?=null
+
     val scrollTo = ObservableInt()
     var secureChatList = listOf<SecureChat>()
     set(value) {
@@ -27,6 +30,7 @@ class SecureChatAdapter(
         scrollTo.set(field.size - 1)
         notifyDataSetChanged()
     }
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -69,7 +73,7 @@ class SecureChatAdapter(
         when(secureChatList[position].direction){
             "INCOMING" -> (holder as SecureChatRecyclerViewHolder.IncomingMessageHolder).bind(secureChatList[position])
             "OUTGOING" -> (holder as SecureChatRecyclerViewHolder.OutgoingMessageHolder).bind(secureChatList[position])
-            "TOPIC" -> (holder as SecureChatRecyclerViewHolder.ChatTopicsMenuViewHolder).bind(topicsList(),simpleListener)
+            "TOPIC" -> (holder as SecureChatRecyclerViewHolder.ChatTopicsMenuViewHolder).bind(topicsList(),simpleListener,context)
             "HEADER" -> (holder as SecureChatRecyclerViewHolder.HeaderMessageHolder).bind()
             else -> throw IllegalArgumentException("Error")
         }

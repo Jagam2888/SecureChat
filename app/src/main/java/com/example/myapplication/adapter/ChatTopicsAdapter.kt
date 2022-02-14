@@ -15,7 +15,7 @@ class ChatTopicsAdapter(
     private val simpleListener: SimpleListener
 ):RecyclerView.Adapter<ChatTopicsAdapter.chatTopicsViewHolder>() {
 
-    val secureChatAdapter = SecureChatAdapter(simpleListener)
+
     var chatTopicList = listOf<ChatTopics>()
     set(value) {
         field = value
